@@ -1,25 +1,37 @@
-import logo from './logo.svg';
 import './App.css';
+import Modal from './Components/Modal';
+import List from './Components/List';
+import { React, useState, useEffect } from 'react'
+import axios from 'axios';
 
-function App() {
+
+export default function App() {
+  const [showModal, setShowModal] = useState(false)
+  const [data, setData] = useState([])
+  
+  const fetchData = () => {
+    axios.get('https://my-classroom-tploc1305-api.herokuapp.com/classrooms')
+    .then(response => { 
+      setData(response.data)
+    })
+    .catch(err => alert(err))
+  }
+
+  useEffect(() => {
+    fetchData()
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id="app" className="container">
+      <div className="top-bar">
+        <span className="top-bar__title">Classrooms</span>
+        <button className="top-bar__button top-bar__button--add" onClick={() => setShowModal(true)}>Add</button>
+      </div>
+      {showModal && <Modal
+        onAddSuccess={fetchData}        
+        onClose={() => setShowModal(false)}
+      />}
+      <List items={data} />
     </div>
   );
 }
-
-export default App;

@@ -1,38 +1,171 @@
-.App {
-  text-align: center;
+.container {
+  width: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  margin: 0 !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.top-bar {
+  width: calc(100% - 20px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: hsl(188, 82%, 65%);
+
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.top-bar__title {
+  font-size: 30px;
+  font-weight: bold;
+  color: rgb(7, 7, 7);
+  padding: 10px;
+  border-radius: 10px;
+  background-color:rgb(255, 255, 255, 0.8);
+}
+
+.top-bar__button {
+  font-size: 20px;
+  font-weight: bold;
+  width: 100px;
+  height: 50px;
+  color: rgb(5, 5, 5);
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: rgb(255, 255, 255);
+  transition: 0.5s;
+}
+
+.top-bar__button:hover {
+  background-color: rgb(192, 191, 191);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.top-bar__button:active {
+  box-shadow: none;
+  background-color: rgb(116, 116, 116);
+}
+
+.list {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -5px;
+}
+
+.item {
+  width: calc(20% - 40px);
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: box-shadow 0.3s;
+  margin-left: 10px;
+  margin-top: 10px;
+  padding: 0 15px;
+  cursor: pointer;
+}
+
+.item:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.modal-mask {
+  position: fixed;
+  z-index: 9998;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .5);
+  display: table;
+  transition: opacity .3s ease;
+}
+
+.modal-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.modal-container {
+  width: 500px;
+  margin: 0px auto;
+  padding: 20px 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+  transition: all .3s ease;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.modal-body {
+  margin: 20px 0;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.modal-default-button {
+  width: 80px;
+  padding: 10px;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  background-color: white;
+  font-weight: bold;
+}
+
+.modal-default-button:hover {
+  opacity: 0.8;
+}
+
+.modal-default-button:active {
+  opacity: 1;
+}
+
+.modal-default-button--save {
+  background-color: hsl(188, 82%, 65%);
+}
+
+.modal-default-button--cancel {
+  background-color: gainsboro;
+}
+
+.modal-default-button + .modal-default-button {
+  margin-left: 10px;
+}
+
+.modal-header {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.modal-body__form {
+  width: 100%;
   display: flex;
   flex-direction: column;
+}
+
+.modal-body__form__form-control {
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.modal-body__form__form-control + .modal-body__form__form-control {
+  margin-top: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.modal-body__form__form-control__label {
+  width: 10%;
+}
+
+.modal-body__form__form-control__input {
+  height: 30px;
+  margin-left: 10px;
+  width: calc(90% - 10px);
+  font-size: 15px;
 }
